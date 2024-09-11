@@ -1,15 +1,12 @@
 import React ,{useState,Suspense} from "react";
-import {Canvas} from "@react-three/fiber"
-import {OrbitControls,Preload,useGLTF } from "@react-three/drei"
+
 import EarthCanvas from "./components/Earth";
 
 
 
 const App = () => {
-    const [text,setText]=useState("");
-    const [from,setFrom]=useState("eng");
-    const [to,setTo]=useState("ar")
-    const [result,setResult]=useState("")
+ 
+  
 
 
  
