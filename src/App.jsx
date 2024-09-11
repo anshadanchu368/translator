@@ -1,17 +1,25 @@
 import React ,{useState,Suspense} from "react";
-
+import {InputBox} from "./components"
 import EarthCanvas from "./components/Earth";
-
-
+import useTranslator from "./hooks/useTranslator";
+import './App.css'
 
 const App = () => {
+   const [texts,setTexts]=useState("")
+   const  [targetLanguage,setTargetLanguage]=useState("ar")
+   const [sourceLanguage,setSourceLanguage] =useState("eng")
+   const [translatedText,setTranslatedText]=useState("")
+
+   const TranslatedInfo =useTranslator(texts,sourceLanguage,targetLanguage)
  
-  
-
-
- 
-
-
+    const options=Object.keys(TranslatedInfo)    //getting keys from data got from TranslatedInfo
+     
+    const swap =()=>{
+      setTargetLanguage(sourceLanguage)
+      setSourceLanguage(targetLanguage)
+      setTranslatedText(texts)
+      setTexts(translatedText)
+    }
 
   return (
     <div className="min-h-screen w-full bg-slate-900  flex justify-center items-center ">
