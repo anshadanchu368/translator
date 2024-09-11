@@ -11,6 +11,8 @@ const App = () => {
    const [translatedText,setTranslatedText]=useState("")
 
    const TranslatedInfo =useTranslator(texts,sourceLanguage,targetLanguage)
+
+   const {data,loading,error} =TranslatedInfo
  
     const options=Object.keys(TranslatedInfo)    //getting keys from data got from TranslatedInfo
      
@@ -20,6 +22,15 @@ const App = () => {
       setTranslatedText(texts)
       setTexts(translatedText)
     }
+
+    useEffect(()=>{
+      if(data && data.texts){
+        const translated= data.texts.filter(text => text !== "don't translate me!").join("\n")
+        setTranslatedText(translated)
+      }
+    },[data])
+
+     
 
   return (
     <div className="min-h-screen w-full bg-slate-900  flex justify-center items-center ">
