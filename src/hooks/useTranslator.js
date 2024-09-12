@@ -1,7 +1,7 @@
 import {useEffect,useState} from "react"
 
 function useTranslator(texts,targetLanguage,sourceLanguage ="en"){
-    const [translatedText,setTranslatedText]=useState(null)
+    const [data,setData]=useState(null)
     const [loading,setLoading]=useState(false)
     const [error, setError] = useState(null)
     useEffect(()=>{
@@ -28,7 +28,7 @@ function useTranslator(texts,targetLanguage,sourceLanguage ="en"){
                 throw new Error('Translation request failed')
              }
              const result = await response.json();
-             setTranslatedText(result.translatedText)
+             setData(result.translatedText)
           }catch (error){
              setError(error.message);
              console.log("fetch failed: " + error.message);
@@ -43,7 +43,7 @@ function useTranslator(texts,targetLanguage,sourceLanguage ="en"){
         }
     },[texts,targetLanguage,sourceLanguage])
 
-    return [translatedText,loading,error]
+    return [data,loading,error]
   }
 
 export default useTranslator

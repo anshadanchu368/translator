@@ -34,16 +34,15 @@ const InputBox = ({
         />
       </div>
       <div className="w-1/2 flex flex-col flex-wrap justify-center items-center ">
-        <p className="text-white text-lg mb-1 w-full font-semibold ">
+        <p className="text-white text-lg  w-full font-semibold pl-10 ">
           Select Language
         </p>
         <select
-          name=""
-          id=""
-          className="rounded-lg px-1 py-1 bg-black text-white cursor-pointer outline-none"
+          className="rounded-lg px-1 mt-3 py-2 bg-black text-white cursor-pointer outline-none"
           value={selectLanguage}
           onChange={(e) => onLanguageChange && onLanguageChange(e.target.value)}
           disabled={LanguageDisable}
+          
         >
           {languageOptions.map((language) => (
             

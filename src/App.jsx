@@ -1,7 +1,7 @@
 import React, { useState, Suspense } from "react";
 import { InputBox } from "./components";
 import EarthCanvas from "./components/Earth";
-// import useTranslator from "./hooks/useTranslator";
+import useTranslator from "./hooks/useTranslator";
 import useLanguages from "./hooks/useLanguages";
 // import "./App.css";
 
@@ -15,6 +15,8 @@ const App = () => {
   const [languages,loading,error]= useLanguages()
 
   const options = languages ? languages.map(lang => lang.name) : [];
+
+  const [data]=useTranslator(texts,targetLanguage,sourceLanguage)
   
   
   
@@ -53,7 +55,7 @@ const App = () => {
                   texts={texts}
                   languageOptions={options}
                   ontextsChange={(texts) => setTexts(texts)}
-                  selectCurrency={targetLanguage}
+                  selectLanguage={targetLanguage}
                 />
               </div>
             </form>
